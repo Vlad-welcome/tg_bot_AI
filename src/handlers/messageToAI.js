@@ -3,5 +3,5 @@ import { Commands } from "../commands/command.js";
 
 export function messageToAIHandler(bot) {
   logger.info("messageToAIHandler");
-  bot.on("message:text", (ctx) => ctx.conversation.enter(Commands.MessageToAI));
+  bot.on(["message:entities:mention"], (ctx) => ctx.conversation.enter(Commands.MessageToAI));
 }

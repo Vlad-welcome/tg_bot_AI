@@ -5,8 +5,8 @@ import { gigaChatClient } from "../config/gigachat.js";
 export async function messageToAIConversation(conversation, ctx) {
   logger.info("messageToAIConversation");
 
-  const { message } = ctx;
-  const text = message.text.trim();
+  const botUsername = ctx.me.username;
+  const text = ctx.message.text?.replace(`@${botUsername}`, "").trim();
 
   const keyboardChoice = new InlineKeyboard().text("Да", `yes`).text("Нет", `no`);
 
